@@ -1,7 +1,8 @@
-const apikey = '123'
+const apikey = ''
 
 function getAnswer() {
     fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + apikey
@@ -13,7 +14,7 @@ function getAnswer() {
                 'messages': [
                     {
                         'role': 'user',
-                        'content': 'Escribe el nombre de la estrella del sistema solar, usando solo tres letras, solo escribe el nombre'
+                        'content': 'Escribe el nombre del animal insignia de Colombia, solo escribe el nombre'
                     }
                 ],
                 'temperature': 0.1,
@@ -22,4 +23,8 @@ function getAnswer() {
         )
 
     })
+    .then(response=>response.json())
+    .then(data=>console.log(data.choices[0].message.content))
 }
+
+getAnswer();
