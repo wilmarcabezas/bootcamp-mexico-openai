@@ -1,30 +1,31 @@
-const apikey = ''
+const apikey = "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";
 
 function getAnswer() {
-    fetch('https://api.openai.com/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + apikey
+  fetch("https://api.openai.com/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + apikey,
+    },
+    body: JSON.stringify({
+      model: "gpt-3.5-turbo",
+      messages: [
+        {
+          role: "user",
+          content:
+            "Escribe el nombre del animal insignia de Colombia, solo escribe el nombre",
         },
-        body: JSON.stringify(
-
-            {
-                'model': 'gpt-3.5-turbo',
-                'messages': [
-                    {
-                        'role': 'user',
-                        'content': 'Escribe el nombre del animal insignia de Colombia, solo escribe el nombre'
-                    }
-                ],
-                'temperature': 0.1,
-                'max_tokens': 10
-            }
-        )
-
-    })
-    .then(response=>response.json())
-    .then(data=>console.log(data.choices[0].message.content))
+      ],
+      temperature: 0.1,
+      max_tokens: 10,
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) =>
+      console.log(
+        "La respuesta de ChatGPT es:" + data.choices[0].message.content
+      )
+    );
 }
 
 getAnswer();
