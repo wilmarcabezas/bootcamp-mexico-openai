@@ -1,4 +1,4 @@
-const apikey = ''
+const apikey = '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'
 
 function getAnswer() {
     fetch('https://api.openai.com/v1/chat/completions', {
