@@ -24,7 +24,7 @@ function getAnswer() {
 
     })
     .then(response=>response.json())
-    .then(data=>console.log(data.choices[0].message.content))
+    .then(data=>console.log('La Respuesta de ChatGPT es: ' + data.choices[0].message.content))
 }
 
 getAnswer();
